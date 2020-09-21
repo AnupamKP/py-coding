@@ -35,7 +35,7 @@ class BinaryTree:
             yield from self._postorder_traversal(node.right)
             yield node
     
-    def levelorder_traversal(self):
+    def levelorder_traversal(self) -> list:
         Q = [self.root]
 
         while Q:
@@ -46,7 +46,7 @@ class BinaryTree:
             if temp.right is not None:
                 Q.append(temp.right)
 
-    def put(self, value):
+    def put(self, value: int):
         new_node = self.Node(value)
         if self.root == None:
             self.root = new_node
@@ -68,7 +68,7 @@ class BinaryTree:
                 temp.right = new_node
                 break
     
-    def remove(self,value):
+    def remove(self, value: int):
         if self.root == None:
             return
 

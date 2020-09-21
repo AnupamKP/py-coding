@@ -137,7 +137,7 @@ class BinarySearchTree:
             yield from self._postorder_traversal(node.right)
             yield node
 
-    def levelorder_traversal(self):
+    def levelorder_traversal(self) -> list:
         Q = [self.root]
 
         while Q:
