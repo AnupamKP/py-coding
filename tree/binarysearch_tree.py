@@ -1,7 +1,7 @@
 class BinarySearchTree:
     def __init__(self):
         self.root = None
-    
+
     class Node:
         def __init__(self, data: int, parent):
             self.data = data
@@ -127,7 +127,7 @@ class BinarySearchTree:
             yield node
             yield from self._preorder_traversal(node.left)
             yield from self._preorder_traversal(node.right)
-    
+
     def postorder_traversal(self) -> list:
         return self._postorder_traversal(self.root)
 
@@ -137,11 +137,23 @@ class BinarySearchTree:
             yield from self._postorder_traversal(node.right)
             yield node
 
+    def levelorder_traversal(self):
+        Q = [self.root]
+
+        while Q:
+            temp = Q.pop(0)
+            yield temp
+            if temp.left is not None:
+                Q.append(temp.left)
+            if temp.right is not None:
+                Q.append(temp.right)
+
+
 if __name__ == "__main__":
     bst = BinarySearchTree()
     bst.put(4)
-    bst.put(5)
+    bst.put(9)
     bst.put(7)
     bst.put(8)
-    tree_list = [el.data for el in bst.inorder_traversal()]
+    tree_list = [el.data for el in bst.levelorder_traversal()]
     print(tree_list)
