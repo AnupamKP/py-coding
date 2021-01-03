@@ -115,38 +115,41 @@ class BinarySearchTree:
 
     def _inorder_traversal(self, node: Node) -> list:
         if node is not None:
-            yield from self._inorder_traversal(node.left)
-            yield node
-            yield from self._inorder_traversal(node.right)
+            return self._inorder_traversal(node.left) + [node.data] + self._inorder_traversal(node.right)
+        else:
+            return []
 
     def preorder_traversal(self) -> list:
         return self._preorder_traversal(self.root)
 
     def _preorder_traversal(self, node: Node) -> list:
         if node is not None:
-            yield node
-            yield from self._preorder_traversal(node.left)
-            yield from self._preorder_traversal(node.right)
+            return [node.data] + self._inorder_traversal(node.left) + self._inorder_traversal(node.right)
+        else:
+            return []
 
     def postorder_traversal(self) -> list:
         return self._postorder_traversal(self.root)
 
     def _postorder_traversal(self, node: Node) -> list:
         if node is not None:
-            yield from self._postorder_traversal(node.left)
-            yield from self._postorder_traversal(node.right)
-            yield node
-
+            return self._inorder_traversal(node.left) + self._inorder_traversal(node.right) + [node.data]
+        else:
+            return []
+    
     def levelorder_traversal(self) -> list:
         Q = [self.root]
+        result = []
 
         while Q:
             temp = Q.pop(0)
-            yield temp
+            result.append(temp.data)
             if temp.left is not None:
                 Q.append(temp.left)
             if temp.right is not None:
                 Q.append(temp.right)
+        
+        return result
 
 
 if __name__ == "__main__":
@@ -155,5 +158,11 @@ if __name__ == "__main__":
     bst.put(9)
     bst.put(7)
     bst.put(8)
-    tree_list = [el.data for el in bst.levelorder_traversal()]
+    tree_list = bst.levelorder_traversal()
+    print(tree_list)
+    tree_list = bst.inorder_traversal()
+    print(tree_list)
+    tree_list = bst.preorder_traversal()
+    print(tree_list)
+    tree_list = bst.postorder_traversal()
     print(tree_list)

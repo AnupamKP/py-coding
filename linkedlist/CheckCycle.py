@@ -1,0 +1,11 @@
+def hasCycle(self, head: ListNode) -> bool:
+        slow_node = fast_node = head
+        if head == None:
+            return False
+        else:
+            while(fast_node.next != None and fast_node.next.next != None):
+                fast_node = fast_node.next.next
+                slow_node = slow_node.next
+                if fast_node == slow_node:
+                    return True
+            return False
