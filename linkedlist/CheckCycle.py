@@ -1,3 +1,9 @@
+'''
+Q. Given a linkedlist head , find whether the linkedlist has a cycle or not.
+
+Hint: Similiar to finding the middle of the node using 2 nodes
+'''
+
 def hasCycle(self, head: ListNode) -> bool:
         slow_node = fast_node = head
         if head == None:

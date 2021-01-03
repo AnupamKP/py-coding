@@ -1,4 +1,6 @@
-# Q. Design an Single linkedlist using oop and have basic capabilities of add , delete and get methods
+'''
+Q. Design an Single linkedlist using oop and have basic capabilities of add , delete and get methods
+'''
 
 class SLinkedList:
     class Node:
